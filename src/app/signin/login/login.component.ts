@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 import { Observable, fromEvent, merge } from 'rxjs';
 import { FormBaseComponent } from 'src/app/base-components/form-base.component';
 import { User } from 'src/app/models/user';
+import { SignInService } from '../services/signin.service';
 
 @Component({
   selector: 'app-login',
@@ -32,7 +33,7 @@ export class LoginComponent
   loginForm: FormGroup;
   user: User;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router,private signInService:SignInService) {
     super();
 
     this.validationMessages = {
@@ -70,6 +71,32 @@ export class LoginComponent
     merge(...controlBlurs).subscribe(() => {
       this.displayMessage = this.genericValidator.process(this.loginForm);
     });
+  }
+
+  login(){
+    if(this.loginForm.dirty && this.loginForm.valid){
+      this.user=Object.assign({},this.user,this.loginForm.value);
+
+      this.signInService.login(this.user)
+                        .subscribe(
+                          success=>{this.successProcessing(success)},
+                          error=>{this.errorProcessing(error)}
+                        )
+
+    }
+  }
+
+  successProcessing(response:any){
+    this.loginForm.reset();
+    this.errors=[];
+
+    this.signInService.localStorage.salvarDadosLocaisUsuario(response);
+
+    this.router.navigate(['/home']);
+  }
+
+  errorProcessing(fail:any){
+    this.errors=fail.error.errors;
   }
 }
 

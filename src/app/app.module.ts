@@ -6,8 +6,7 @@ import { SigninComponent } from './signin/signin.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SigninComponent
+    AppComponent
   ],
   imports: [
     BrowserModule
