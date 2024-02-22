@@ -1,33 +1,29 @@
-import { ValidationMessages } from './../utils/interfaces/generic-form-validation-interface';
+import { ElementRef } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+
+import { Observable, fromEvent, merge } from 'rxjs';
+
 import { GenericValidator } from '../utils/generic-form-validation';
 import {
   DisplayMessage,
   ValidationMessages,
 } from '../utils/interfaces/generic-form-validation-interface';
-import { FormGroup } from '@angular/forms';
-import { Observable, fromEvent, merge } from 'rxjs';
-import { ElementRef } from '@angular/core';
 
 export abstract class FormBaseComponent {
   errors: any[] = [];
+  displayMessage: DisplayMessage = {};
+  genericValidator: GenericValidator;
+  validationMessages: ValidationMessages;
 
-  displayMessage: DisplayMessage | undefined = {};
-  validationMessages: ValidationMessages | undefined = {};
-  genericValidator: GenericValidator | undefined;
-  unsavedChanges: boolean | undefined;
+  mudancasNaoSalvas: boolean;
 
-  protected configureValidationMessagesBase(
-    validationMessage: ValidationMessages
+  protected configurarMensagensValidacaoBase(
+    validationMessages: ValidationMessages
   ) {
-    this.genericValidator = new GenericValidator(validationMessage);
+    this.genericValidator = new GenericValidator(validationMessages);
   }
 
-  private validateForm(formGroup: FormGroup) {
-    this.displayMessage = this.genericValidator?.process(formGroup);
-    this.unsavedChanges = true;
-  }
-
-  protected configureValidationFormBase(
+  protected configurarValidacaoFormularioBase(
     formInputElements: ElementRef[],
     formGroup: FormGroup
   ) {
@@ -36,7 +32,12 @@ export abstract class FormBaseComponent {
     );
 
     merge(...controlBlurs).subscribe(() => {
-      this.validateForm(formGroup);
+      this.validarFormulario(formGroup);
     });
+  }
+
+  protected validarFormulario(formGroup: FormGroup) {
+    this.displayMessage = this.genericValidator.processarMensagens(formGroup);
+    this.mudancasNaoSalvas = true;
   }
 }

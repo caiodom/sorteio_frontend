@@ -15,6 +15,7 @@ const signinRouterConfig:Routes=
         [
             {path:'register',component:RegisterComponent,canActivate:[SigninGuard],canDeactivate:[SigninGuard]},
             {path:'login',component:LoginComponent,canActivate:[SigninGuard]},
+
         ]
     }
 ]

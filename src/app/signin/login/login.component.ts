@@ -17,7 +17,8 @@ import { Observable, fromEvent, merge } from 'rxjs';
 import { FormBaseComponent } from 'src/app/base-components/form-base.component';
 import { User } from 'src/app/models/user';
 import { SignInService } from '../services/signin.service';
-
+import { CustomValidators } from '@narik/custom-validators';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -33,7 +34,10 @@ export class LoginComponent
   loginForm: FormGroup;
   user: User;
 
-  constructor(private fb: FormBuilder, private router: Router,private signInService:SignInService) {
+  constructor(private fb: FormBuilder,
+              private router: Router,
+              private signInService:SignInService,
+              private toastr: ToastrService) {
     super();
 
     this.validationMessages = {
@@ -47,41 +51,37 @@ export class LoginComponent
       },
     };
 
-    super.configureValidationMessagesBase(this.validationMessages);
+    super.configurarMensagensValidacaoBase(this.validationMessages);
   }
 
   ngOnInit(): void {
-    let password = new FormControl('', [
-      Validators.required,
-      Validators.minLength(5),
-      Validators.maxLength(10),
-    ]);
-
     this.loginForm = this.fb.group({
-      email: ['', Validators.required, Validators.email],
-      password: password,
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, CustomValidators.rangeLength([6, 15])]]
     });
   }
 
   ngAfterViewInit(): void {
-    let controlBlurs: Observable<any>[] = this.formInputElements.map(
-      (formControl: ElementRef) => fromEvent(formControl.nativeElement, 'blur')
-    );
-
-    merge(...controlBlurs).subscribe(() => {
-      this.displayMessage = this.genericValidator.process(this.loginForm);
-    });
+    super.configurarValidacaoFormularioBase(this.formInputElements, this.loginForm);
+    console.log(this.loginForm.errors);
   }
 
   login(){
-    if(this.loginForm.dirty && this.loginForm.valid){
-      this.user=Object.assign({},this.user,this.loginForm.value);
 
-      this.signInService.login(this.user)
-                        .subscribe(
-                          success=>{this.successProcessing(success)},
-                          error=>{this.errorProcessing(error)}
-                        )
+    console.log(this.loginForm.errors)
+    if(this.loginForm.dirty && this.loginForm.valid){
+
+      let objLogin = {
+        userName: this.loginForm.get('email').value,
+        password: this.loginForm.get('password').value,
+      };
+
+      this.signInService.login(objLogin)
+                        .subscribe({
+                          next:success=>{this.successProcessing(success)},
+                          error:error=>{this.errorProcessing(error)}
+                        });
+
 
     }
   }
@@ -92,11 +92,24 @@ export class LoginComponent
 
     this.signInService.localStorage.salvarDadosLocaisUsuario(response);
 
+    this.toastr.success('Login realizado com sucesso!','Sucesso!!');
+
+
+   /* let toast = this.toastr.success('Login realizado com Sucesso!', 'Bem vindo!!!');
+    if(toast){
+      toast.onHidden.subscribe(() => {
+        this.returnUrl
+        ? this.router.navigate([this.returnUrl])
+        : this.router.navigate(['/home']);
+      });
+    } */
+
     this.router.navigate(['/home']);
   }
 
   errorProcessing(fail:any){
     this.errors=fail.error.errors;
+    this.toastr.error('Ocorreu um erro!','Erro');
   }
 }
 

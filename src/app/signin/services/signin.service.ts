@@ -31,7 +31,7 @@ registerUser(user:User,isAdmin:boolean):Observable<User>{
 
     }
 
-login(user:User):Observable<User>{
+login(user:any):Observable<any>{
 
         let response=this.http
                          .post(environment.api + 'auth/login',user,this.ObterHeaderJson())
