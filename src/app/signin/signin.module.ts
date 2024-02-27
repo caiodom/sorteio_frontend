@@ -22,7 +22,6 @@ import { SigninGuard } from "./services/signin.guard";
     ],
     imports:[
         CommonModule,
-        RouterModule,
         SignInRoutingModule,
         FormsModule,
         ReactiveFormsModule,

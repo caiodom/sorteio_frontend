@@ -1,0 +1,13 @@
+<li class="nav-item">
+  <div class="dropdown">
+    <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+      Usuários
+    </a>
+    <ul [ngSwitch]="usuarioLogado()" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <li *ngSwitchCase="false"><a class="btn btn-primary" [routerLink]="['/signin/login']">Entrar</a></li>
+      <li *ngSwitchCase="false"><a class="btn btn-success" [routerLink]="['/signin/register']">Crie sua conta</a></li>
+      <li *ngSwitchCase="true"><a class="nav-link text-dark" id="saudacaoUsuario" href="javascript:void(0)">{{ email }}</a></li>
+      <li *ngSwitchCase="true"><a class="nav-link text-dark" href="javascript:void(0)" (click)="logout()"> Sair <span class="fas fa-sign-out-alt"></span></a></li>
+    </ul>
+  </div>
+</li>

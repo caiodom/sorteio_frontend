@@ -1,22 +1,18 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { HomeComponent } from "./navigation/home/home.component";
 
 const routes: Routes=[
 
   {
     path:'',
     redirectTo:'/signin/login',
-    pathMatch:'full'
+    pathMatch:'full',
+
   },
   {
     path:'signin',
         loadChildren:()=>import('./signin/signin.module')
                 .then(m=>m.SigninModule)
-  },
-  {
-    path:'home',
-    component:HomeComponent
   },
   {
     path:'sorteio',

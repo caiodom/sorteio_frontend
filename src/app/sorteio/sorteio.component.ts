@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../utils/shared-variables';
 
 @Component({
   selector: 'app-sorteio',
@@ -6,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SorteioComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sharedService: SharedService) { }
+
 
   ngOnInit(): void {
+    this.sharedService.setMenuValue(true);
   }
+
 
 }

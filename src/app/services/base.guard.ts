@@ -3,7 +3,7 @@ import { LocalStorageUtils } from '../utils/localstorage-utils';
 
 export abstract class BaseGuard{
 
-    private localStorageUtils=new LocalStorageUtils();
+    protected localStorageUtils=new LocalStorageUtils();
 
     constructor(protected router:Router){
 

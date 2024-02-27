@@ -21,7 +21,7 @@ export class SignInService extends BaseHeaderService
 registerUser(user:User,isAdmin:boolean):Observable<User>{
 
         let response=this.http
-                            .post(environment.api + 'auth/register',user,(isAdmin)? this.ObterAuthHeaderJson()
+                            .post(environment.api + 'auth/nova-conta',user,(isAdmin)? this.ObterAuthHeaderJson()
                                                                                                  : this.ObterHeaderJson())
                             .pipe(
                                 map(this.extractBase),
@@ -34,7 +34,7 @@ registerUser(user:User,isAdmin:boolean):Observable<User>{
 login(user:any):Observable<any>{
 
         let response=this.http
-                         .post(environment.api + 'auth/login',user,this.ObterHeaderJson())
+                         .post(environment.api + 'auth/entrar',user,this.ObterHeaderJson())
                          .pipe(
                              map(this.extractBase),
                              catchError(this.serviceError));

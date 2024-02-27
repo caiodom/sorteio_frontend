@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { NavigationModule } from './navigation/navigation.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SorteioModule } from './sorteio/sorteio.module';
-import { SorteioRouteModule } from './sorteio/sorteio.route';
+import { NavigationModule } from './navigation/navigation.module';
 
 @NgModule({
   declarations: [
@@ -16,13 +15,12 @@ import { SorteioRouteModule } from './sorteio/sorteio.route';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot(),
-    SorteioModule,
+    AppRoutingModule,
     NavigationModule,
-    SorteioRouteModule
+    SorteioModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
 
   ],
   providers: [],

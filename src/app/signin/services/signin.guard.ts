@@ -15,7 +15,7 @@ export class SigninGuard implements CanDeactivate<RegisterComponent>,CanActivate
   canActivate() {
 
     if(this.localStorageUtils.obterTokenUsuario()){
-      this.router.navigate(['home']);
+      this.router.navigate(['sorteio/home']);
     }
 
     return true;

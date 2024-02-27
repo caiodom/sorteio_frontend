@@ -1,3 +1,4 @@
+import { HomeModule } from './home/home.module';
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { SorteioComponent } from "./sorteio.component";
@@ -6,6 +7,11 @@ const routes: Routes = [
 {
   path:'',
   component:SorteioComponent
+},
+{
+  path:'home',
+  loadChildren: ()=>import('./home/home.module')
+        .then(m=>m.HomeModule)
 },
 {
   path:'dados-sorteio',

@@ -16,6 +16,8 @@ import { FormBaseComponent } from 'src/app/base-components/form-base.component';
 import { User } from 'src/app/models/user';
 import { SignInService } from '../services/signin.service';
 import { Router } from '@angular/router';
+import { CustomValidators } from '@narik/custom-validators';
+import { SharedService } from 'src/app/utils/shared-variables';
 
 @Component({
   selector: 'app-register',
@@ -37,38 +39,45 @@ export class RegisterComponent
   constructor(
     private fb: FormBuilder,
     private signinService: SignInService,
-    private router: Router
+    private router: Router,
+    private sharedService: SharedService
   ) {
     super();
 
     this.validationMessages = {
-      nome: {
-        required: 'Digite seu nome',
-      },
       email: {
         required: 'Digite seu Email',
         email: 'Email inválido',
       },
-      senha: {
+      password: {
         required: 'Digite sua senha',
         rangeLength: 'A senha deve conter entre 6 e 15 caracteres',
       },
+      confirmPassword: {
+        required: 'Informe a senha novamente',
+        rangeLength: 'A senha deve possuir entre 6 e 15 caracteres',
+        equalTo: 'As senhas não conferem'
+      }
     };
 
     super.configurarMensagensValidacaoBase(this.validationMessages);
   }
 
   ngOnInit(): void {
-    let senha = new FormControl('', [
+    this.sharedService.setMenuValue(false);
+
+    let password = new FormControl('', [
       Validators.required,
       Validators.minLength(6),
       Validators.maxLength(15),
     ]);
 
+    let confirmPassword = new FormControl('', [Validators.required, CustomValidators.rangeLength([6, 15]), CustomValidators.equalTo(password)]);
+
     this.registroForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      senha: senha,
-      nome: ['', [Validators.required]],
+      password: password,
+      confirmPassword: confirmPassword,
     });
   }
 
@@ -78,13 +87,7 @@ export class RegisterComponent
 
   registrarConta() {
     if (this.registroForm.dirty && this.registroForm.valid) {
-      this.user = {
-        id: '0',
-        userName: this.registroForm.get('nome').value,
-        isAdmin: false,
-        password: this.registroForm.get('senha').value,
-        email: this.registroForm.get('email').value,
-      };
+      this.user = Object.assign({}, this.user, this.registroForm.value);
 
       this.signinService.registerUser(this.user, false).subscribe({
         next: (success) => {

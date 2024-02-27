@@ -1,22 +1,27 @@
+import { NavigationModule } from 'src/app/navigation/navigation.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SorteioComponent } from './sorteio.component';
-import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NavigationModule } from '../navigation/navigation.module';
+import { SorteioRouteModule } from './sorteio.route';
+import { BrowserModule } from '@angular/platform-browser';
+import { HomeModule } from './home/home.module';
+import { RouterModule } from '@angular/router';
+
 
 
 
 @NgModule({
   declarations: [
-    SorteioComponent
+    SorteioComponent,
   ],
   imports: [
     CommonModule,
-    RouterModule,
     FormsModule,
-    ReactiveFormsModule,
-    NavigationModule
+    NavigationModule,
+    SorteioRouteModule,
+    ReactiveFormsModule
+
   ]
 })
 export class SorteioModule { }
