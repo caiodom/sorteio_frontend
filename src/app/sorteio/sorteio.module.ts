@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SorteioComponent } from './sorteio.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NavigationModule } from '../navigation/navigation.module';
 
 
 
@@ -14,7 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NavigationModule
   ]
 })
 export class SorteioModule { }

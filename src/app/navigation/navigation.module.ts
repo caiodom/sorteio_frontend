@@ -6,6 +6,9 @@ import { FooterComponent } from './footer/footer.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AcessoNegadoComponent } from './acesso-negado/acesso-negado.component';
 import { RouterModule } from '@angular/router';
+import { MenuNoUserComponent } from './menu-no-user/menu-no-user.component';
+import { ContatoComponent } from './contato/contato.component';
+
 
 
 
@@ -15,11 +18,14 @@ import { RouterModule } from '@angular/router';
     HomeComponent,
     FooterComponent,
     NotFoundComponent,
-    AcessoNegadoComponent
+    AcessoNegadoComponent,
+    MenuNoUserComponent,
+    ContatoComponent
   ],
   imports: [
     CommonModule,
     RouterModule
+
   ],
   exports:[
     MenuComponent,
@@ -27,6 +33,11 @@ import { RouterModule } from '@angular/router';
     FooterComponent,
     NotFoundComponent,
     AcessoNegadoComponent
+  ],
+  providers:[
+
   ]
+
+
 })
 export class NavigationModule { }
