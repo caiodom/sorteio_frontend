@@ -32,6 +32,11 @@ const routes: Routes = [
   path:'ticket-sorteio',
   loadChildren: ()=>import('./ticket-sorteio/ticket-sorteio.module')
         .then(m=>m.TicketSorteioModule)
+},
+{
+  path:'sala-sorteio',
+  loadChildren: ()=>import('./sala-sorteio/sala-sorteio.module')
+        .then(m=>m.SalaSorteioModule)
 }
 
 ]
