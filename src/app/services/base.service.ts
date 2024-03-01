@@ -47,7 +47,7 @@ export abstract class BaseService<T> extends BaseHeaderService {
       .pipe(map(this.extractBase), catchError(this.serviceError));
   }
 
-  delete(id: string, hasAuth: boolean): Observable<string> {
+  delete(id: any, hasAuth: boolean): Observable<string> {
     return this._http
       .delete(
         this._gateway + this._route + '/' + id,
