@@ -15,7 +15,9 @@ const dadosSorteioRouterConfig:Routes=[
     children: [
       {
         path:'listar-todos',
-        component:ListaComponent
+        component:ListaComponent,
+        canActivate:[DadosSorteioGuard],
+        data:[{claim:{name:'DadosSorteio',value:'Excluir'}}]
       },
       {
         path:'adicionar-novo',
