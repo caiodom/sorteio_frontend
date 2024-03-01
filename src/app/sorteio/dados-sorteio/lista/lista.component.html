@@ -27,7 +27,7 @@
               <a class="btn btn-warning" [routerLink]="['/sorteio/dados-sorteio/editar',dadoSorteio.id]">
                   <span class="fa fa-pencil-alt"></span>
               </a>&nbsp;
-              <a class="btn btn-danger" [routerLink]="['/sorteio/dados-sorteio/excluir',dadoSorteio.id]">
+              <a class="btn btn-danger" (click)="openDeleteDialog(dadoSorteio.id)">
                   <span class="fa fa-trash"></span>
               </a>
           </td>

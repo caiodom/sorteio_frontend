@@ -9,6 +9,8 @@ import { RouterModule } from '@angular/router';
 import { ContatoComponent } from './contato/contato.component';
 import { MenuLoginComponent } from './menu-login/menu-login.component';
 import { SignInService } from '../signin/services/signin.service';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { ConfirmationDialogService } from '../services/confirmation-dialog.service';
 
 
 
@@ -20,7 +22,8 @@ import { SignInService } from '../signin/services/signin.service';
     NotFoundComponent,
     AcessoNegadoComponent,
     ContatoComponent,
-    MenuLoginComponent
+    MenuLoginComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +37,9 @@ import { SignInService } from '../signin/services/signin.service';
     NotFoundComponent,
     AcessoNegadoComponent
   ],
+  entryComponents: [ ConfirmationDialogComponent ],
   providers:[
+    ConfirmationDialogService
   ]
 
 

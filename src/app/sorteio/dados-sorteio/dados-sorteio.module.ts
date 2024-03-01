@@ -5,12 +5,12 @@ import { NovoComponent } from './novo/novo.component';
 import { ListaComponent } from './lista/lista.component';
 import { EditarComponent } from './editar/editar.component';
 import { DetalhesComponent } from './detalhes/detalhes.component';
-import { DeleteComponent } from './delete/delete.component';
 import { DadosSorteioRoutingModule } from './dados-sorteio.route';
 import { DadosSorteioService } from './services/dados-sorteio.service';
 import { DadosSorteioResolve } from './services/dados-sorteio.resolve';
 import { DadosSorteioGuard } from './services/dados-sorteio.service.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 
@@ -20,8 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NovoComponent,
     ListaComponent,
     EditarComponent,
-    DetalhesComponent,
-    DeleteComponent
+    DetalhesComponent
   ],
   imports: [
     CommonModule,
@@ -34,6 +33,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DadosSorteioService,
     DadosSorteioResolve,
     DadosSorteioGuard
-  ]
+  ],
 })
 export class DadosSorteioModule { }
