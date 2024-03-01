@@ -10,6 +10,7 @@ import { DadosSorteioRoutingModule } from './dados-sorteio.route';
 import { DadosSorteioService } from './services/dados-sorteio.service';
 import { DadosSorteioResolve } from './services/dados-sorteio.resolve';
 import { DadosSorteioGuard } from './services/dados-sorteio.service.guard';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -24,7 +25,10 @@ import { DadosSorteioGuard } from './services/dados-sorteio.service.guard';
   ],
   imports: [
     CommonModule,
-    DadosSorteioRoutingModule
+    DadosSorteioRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+
   ],
   providers:[
     DadosSorteioService,

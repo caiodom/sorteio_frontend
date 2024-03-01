@@ -1,1 +1,65 @@
-<p>editar works!</p>
+<!-- Conteúdo principal -->
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          Formulário de Cadastro
+        </div>
+        <div class="card-body">
+          <form enctype="multipart/form-data" (ngSubmit)="editar()" [formGroup]="dadosSorteioForm">
+            <div class="alert alert-danger" *ngIf="errors.length > 0">
+              <h3 id="msgRetorno">Opa! Alguma coisa não deu certo:</h3>
+              <ul>
+                  <li *ngFor="let error of errors">{{ error }}</li>
+              </ul>
+            </div>
+            <div class="mb-3">
+              <input type="hidden" id="id" name="id" value="">
+            </div>
+            <div class="mb-3">
+              <label for="descricao" class="form-label">Descrição</label>
+              <input id="descricao"
+                     type="text"
+                     class="form-control"
+                     name="descricao"
+                     [ngClass]="{'is-invalid': displayMessage.descricao }"
+                     formControlName="descricao"
+                      required>
+                      <span class="text-danger" *ngIf="displayMessage.descricao">
+                        <p [innerHTML]="displayMessage.descricao"></p>
+                    </span>
+            </div>
+            <div class="mb-3">
+              <label for="premio" class="form-label">Prêmio</label>
+              <input id="premio"
+                     type="text"
+                     class="form-control"
+                     name="premio"
+                     [ngClass]="{'is-invalid': displayMessage.premio }"
+                     formControlName="premio"
+                     required>
+                     <span class="text-danger" *ngIf="displayMessage.premio">
+                      <p [innerHTML]="displayMessage.premio"></p>
+                  </span>
+            </div>
+            <div class="mb-3">
+              <label for="valorPremio" class="form-label">Valor do Prêmio</label>
+              <input id="valorPremio"
+                     type="text"
+                     class="form-control"
+                     name="valorPremio"
+                     [ngClass]="{'is-invalid': displayMessage.valorPremio}"
+                     formControlName="valorPremio"
+                     required>
+                  <span class="text-danger" *ngIf="displayMessage.valorPremio">
+                      <p [innerHTML]="displayMessage.valorPremio"></p>
+                  </span>
+            </div>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

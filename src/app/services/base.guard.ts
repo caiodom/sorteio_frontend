@@ -28,13 +28,13 @@ export abstract class BaseGuard{
                     this.acessoNegado();
                 }
 
-                let userClaims=user.claims.find(x=>x.claimType===claim.name);
+                let userClaims=user.claims.find(x=>x.type===claim.name);
 
                 if(!userClaims){
                     this.acessoNegado();
                 }
 
-                let claimValues=userClaims.claimValue as string;
+                let claimValues=userClaims.value as string;
 
                 if(!claimValues.includes(claim.value)){
                     this.acessoNegado();

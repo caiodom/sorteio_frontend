@@ -18,9 +18,9 @@
         </thead>
         <tbody>
           <tr *ngFor="let dadoSorteio of dadosSorteio">
-            <td>dadoSorteio.descricao</td>
-            <td>dadoSorteio.premio</td>
-            <td>R$ dadoSorteio.valorPremio</td>
+            <td>{{ dadoSorteio.descricao }}</td>
+            <td>{{ dadoSorteio.premio }} </td>
+            <td>R$ {{ DecimalParaString(dadoSorteio.valorPremio) }} </td>
             <td>
               <a class="btn btn-primary" [routerLink]="['/sorteio/dados-sorteio/editar',dadoSorteio.id]">Editar</a>
             </td>

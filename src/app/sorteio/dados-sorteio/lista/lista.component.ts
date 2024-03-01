@@ -4,6 +4,7 @@ import { FormBaseGlobalComponent } from 'src/app/base-components/form-base-globa
 import { SharedService } from 'src/app/utils/shared-variables';
 import { LocalStorageUtils } from 'src/app/utils/localstorage-utils';
 import { DadosSorteioService } from '../services/dados-sorteio.service';
+import { CurrencyUtils } from 'src/app/utils/currency-utils';
 
 @Component({
   selector: 'app-lista',
@@ -29,6 +30,12 @@ export class ListaComponent extends FormBaseGlobalComponent implements OnInit {
                   error:error=>{this.errorMessage}
                 });
 
+  }
+
+
+  DecimalParaString(valor:any){
+
+    return CurrencyUtils.DecimalParaString(valor);
   }
 
 }
