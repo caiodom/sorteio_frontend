@@ -12,8 +12,7 @@
             <th>Descrição</th>
             <th>Prêmio</th>
             <th>Valor do Prêmio</th>
-            <th>Editar</th>
-            <th>Excluir</th>
+            <th>Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -21,12 +20,17 @@
             <td>{{ dadoSorteio.descricao }}</td>
             <td>{{ dadoSorteio.premio }} </td>
             <td>R$ {{ DecimalParaString(dadoSorteio.valorPremio) }} </td>
-            <td>
-              <a class="btn btn-primary" [routerLink]="['/sorteio/dados-sorteio/editar',dadoSorteio.id]">Editar</a>
-            </td>
-            <td>
-              <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal" [routerLink]="['/sorteio/dados-sorteio/excluir',dadoSorteio.id]">Excluir</a>
-            </td>
+            <td class="text-right">
+              <a class="btn btn-info" [routerLink]="['/sorteio/dados-sorteio/detalhes',dadoSorteio.id]">
+                  <span class="fa fa-search"></span>
+              </a>&nbsp;
+              <a class="btn btn-warning" [routerLink]="['/sorteio/dados-sorteio/editar',dadoSorteio.id]">
+                  <span class="fa fa-pencil-alt"></span>
+              </a>&nbsp;
+              <a class="btn btn-danger" [routerLink]="['/sorteio/dados-sorteio/excluir',dadoSorteio.id]">
+                  <span class="fa fa-trash"></span>
+              </a>
+          </td>
           </tr>
           <!-- Adicione mais linhas conforme necessário -->
         </tbody>

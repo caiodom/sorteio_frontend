@@ -6,6 +6,7 @@ import { DadosSorteioGuard } from "./services/dados-sorteio.service.guard";
 import { DadosSorteioComponent } from "./dados-sorteio.component";
 import { EditarComponent } from "./editar/editar.component";
 import { DadosSorteioResolve } from "./services/dados-sorteio.resolve";
+import { DetalhesComponent } from "./detalhes/detalhes.component";
 
 const dadosSorteioRouterConfig:Routes=[
 
@@ -32,6 +33,12 @@ const dadosSorteioRouterConfig:Routes=[
           dadosSorteio:DadosSorteioResolve
         }
 
+      },
+      {
+        path: 'detalhes/:id', component: DetalhesComponent,
+                resolve: {
+                    dadosSorteio: DadosSorteioResolve
+                }
       }
 
     ]

@@ -56,8 +56,11 @@
                       <p [innerHTML]="displayMessage.valorPremio"></p>
                   </span>
             </div>
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
-            <a class="btn btn-info" [routerLink]="['/sorteio/dados-sorteio/listar-todos']">Back</a>
+            <div class="form-group">
+              <input type="submit" value="Cadastrar" class="btn btn-primary">&nbsp;
+              <a class="btn btn-info" [routerLink]="[ '/sorteio/dados-sorteio/listar-todos']">Voltar</a>
+          </div>
+
           </form>
         </div>
       </div>
