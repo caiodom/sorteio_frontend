@@ -1,1 +1,45 @@
-<p>listar works!</p>
+<!-- Conteúdo principal -->
+<div class="container mt-5">
+  <h2>Listagem de Usuários</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Logradouro</th>
+        <th>CEP</th>
+        <th>Estado</th>
+        <th>Cidade</th>
+        <th>Email</th>
+        <th>Telefone</th>
+        <th>CPF</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Aqui você pode adicionar dinamicamente os usuários provenientes do banco de dados -->
+      <tr *ngFor="let participante of participantesSorteio">
+        <td>{{participante.nome}}</td>
+        <td>{{participante.logradouro}}</td>
+        <td>{{participante.cep}}</td>
+        <td>{{participante.estado}}</td>
+        <td>{{participante.cidade}}</td>
+        <td>{{participante.email}}</td>
+        <td>{{participante.telefone}}</td>
+        <td>{{participante.cpf}}</td>
+        <td class="text-right">
+          <a class="btn btn-info" [routerLink]="['/sorteio/participante-sorteio/detalhes',participante.id]">
+              <span class="fa fa-search"></span>
+          </a>&nbsp;
+          <a class="btn btn-warning" [routerLink]="['/sorteio/participante-sorteio/editar',participante.id]">
+              <span class="fa fa-pencil-alt"></span>
+          </a>&nbsp;
+          <a class="btn btn-danger" (click)="openDeleteDialog(participante.id)">
+              <span class="fa fa-trash"></span>
+          </a>
+      </td>
+      </tr>
+      <!-- Você pode adicionar mais linhas conforme necessário -->
+    </tbody>
+  </table>
+  <button type="button" class="btn btn-success" [routerLink]="['/sorteio/participante-sorteio/adicionar-novo']">Cadastrar</button>
+</div>
