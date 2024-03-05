@@ -130,11 +130,17 @@ export class NovoComponent extends FormBaseGlobalComponent implements OnInit {
     this.errors = [];
 
     this.mudancasNaoSalvas = false;
-    this.router.navigate(['sorteio/participante-sorteio/listar-todos']);
+    let toast = this.toastr.success('Participante cadastrado com sucesso!', 'Sucesso!');
+    if (toast) {
+      toast.onHidden.subscribe(() => {
+        this.router.navigate(['/sorteio/participante-sorteio/listar-todos']);
+      });
+    }
   }
 
   processarErro(response: any) {
     this.errors = response.error.errors;
+    this.toastr.error('Ocorreu um erro '+this.errors);
   }
 
 

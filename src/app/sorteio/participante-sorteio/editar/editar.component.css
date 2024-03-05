@@ -1,0 +1,7 @@
+/* Estilo personalizado para reduzir a altura dos campos */
+.input-sm {
+  height: 30px;
+}
+.label-sm {
+  font-size: 0.8rem;
+}

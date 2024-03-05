@@ -32,14 +32,14 @@ const participanteSorteioRouterConfig: Routes = [
         canActivate: [ParticipanteSorteioGuard],
         data: [{ claim: { name: 'ParticipanteSorteio', value: 'Atualizar' } }],
         resolve: {
-          ParticipanteSorteio: ParticipanteSorteioResolve,
+          participanteSorteio: ParticipanteSorteioResolve,
         },
       },
       {
         path: 'detalhes/:id',
         component: DetalhesComponent,
         resolve: {
-          ParticipanteSorteio: ParticipanteSorteioResolve,
+          participanteSorteio: ParticipanteSorteioResolve,
         },
       },
     ],
