@@ -1,0 +1,27 @@
+<!-- Conteúdo principal -->
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Historico</h2>
+      <hr>
+      <table class="table table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th>Número Historico</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let historico of historicosSorteio">
+            <td>{{ historico.idTicketSorteio }}</td>
+            <td>{{ historico.descricao }} </td>
+          </tr>
+          <!-- Adicione mais linhas conforme necessário -->
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+

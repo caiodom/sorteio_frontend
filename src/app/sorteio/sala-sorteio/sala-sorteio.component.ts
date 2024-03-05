@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SalaSorteioComponent implements OnInit {
 
+
+  sorteado:boolean=false;
+
   constructor() { }
 
   ngOnInit(): void {

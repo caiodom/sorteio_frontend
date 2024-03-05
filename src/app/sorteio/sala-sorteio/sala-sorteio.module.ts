@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SalaSorteioComponent } from './sala-sorteio.component';
+import { SalaSorteioRoutingModule } from './sala-sorteio.router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SalaSorteioService } from './services/sala-sorteio.service';
 
 
 
@@ -9,7 +12,13 @@ import { SalaSorteioComponent } from './sala-sorteio.component';
     SalaSorteioComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SalaSorteioRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
+  providers:[
+    SalaSorteioService
   ]
 })
 export class SalaSorteioModule { }
