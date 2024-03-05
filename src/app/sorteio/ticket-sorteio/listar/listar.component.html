@@ -1,0 +1,29 @@
+<!-- Conteúdo principal -->
+<div class="container mt-5">
+  <h2>Listagem de Usuários</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Participante</th>
+        <th>Sorteio</th>
+        <th>Número</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Aqui você pode adicionar dinamicamente os usuários provenientes do banco de dados -->
+      <tr *ngFor="let ticket of ticketsSorteio">
+        <td>{{ticket.nomeParticipanteSorteio}}</td>
+        <td>{{ticket.descricaoSorteio}}</td>
+        <td>{{ticket.numero}}</td>
+        <td class="text-right">
+          <a class="btn btn-danger" (click)="openDeleteDialog(ticket.id)">
+              <span class="fa fa-trash"></span>
+          </a>
+      </td>
+      </tr>
+      <!-- Você pode adicionar mais linhas conforme necessário -->
+    </tbody>
+  </table>
+  <button type="button" class="btn btn-success" [routerLink]="['/sorteio/ticket-sorteio/adicionar-novo']">Cadastrar</button>
+</div>

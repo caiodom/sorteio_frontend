@@ -3,9 +3,9 @@ import { BaseHeaderService } from './base.header.service';
 import { Observable, catchError, map } from 'rxjs';
 
 export abstract class BaseService<T> extends BaseHeaderService {
-  private _route: string;
-  private _gateway: string;
-  private _http: HttpClient;
+  protected _route: string;
+  protected _gateway: string;
+  protected _http: HttpClient;
 
   constructor(http: HttpClient, route: string, gateway: string) {
     super();

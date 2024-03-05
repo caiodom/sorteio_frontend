@@ -1,0 +1,37 @@
+<div class="container">
+  <h5>Formulário de Cadastro</h5>
+  <form [formGroup]="ticketSorteioForm" (ngSubmit)="cadastrar()" class="row g-3">
+    <div class="col-md-3">
+      <label for="participantes" class="form-label">Participantes:</label>
+      <select class="form-select form-select-sm"
+              id="participantes"
+              formControlName="idParticipanteSorteio"
+              [ngClass]="{'is-invalid': displayMessage.idParticipanteSorteio}">
+        <option value="" selected disabled>Selecione o Participante</option>
+        <option *ngFor="let participante of participantesSorteio" value="{{ participante.id }}">{{ participante.nome }}</option>
+        <!-- Opções de participantes -->
+      </select>
+      <span class="text-danger" *ngIf="displayMessage.idParticipanteSorteio">
+        <p [innerHTML]="displayMessage.idParticipanteSorteio"></p>
+        </span>
+    </div>
+
+    <div class="col-md-3">
+      <label for="sorteio" class="form-label">Sorteio:</label>
+      <select class="form-select form-select-sm"
+              id="sorteio"
+              formControlName="idDadosSorteio"
+              [ngClass]="{'is-invalid': displayMessage.idDadosSorteio}">
+        <option value="" selected disabled>Selecione o Sorteio</option>
+        <option *ngFor="let dadoSorteio of dadosSorteio" value="{{ dadoSorteio.id }}">{{ dadoSorteio.descricao }}</option>
+        <!-- Opções de sorteio -->
+      </select>
+      <span class="text-danger" *ngIf="displayMessage.idDadosSorteio">
+        <p [innerHTML]="displayMessage.idDadosSorteio"></p>
+        </span>
+    </div>
+    <div class="col-md-12">
+      <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </div>
+  </form>
+</div>
