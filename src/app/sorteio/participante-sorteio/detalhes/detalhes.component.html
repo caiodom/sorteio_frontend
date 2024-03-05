@@ -1,1 +1,101 @@
-<p>detalhes works!</p>
+<div class="container main-container">
+  <h1>Detalhes do {{ participanteSorteio.nome }}</h1>
+
+  <div>
+    <h4>Informação somente leitura</h4>
+    <hr />
+    <dl class="row">
+      <dt class="col-sm-2">
+        <label class="control-label">Nome</label>
+      </dt>
+      <dd class="col-sm-10">
+        {{ participanteSorteio.nome }}
+      </dd>
+      <dt class="col-sm-2">
+        <label class="control-label">CEP</label>
+      </dt>
+      <dd class="col-sm-10">
+        {{participanteSorteio.cep }}
+      </dd>
+      <dt class="col-sm-2">
+        <label class="control-label">Logradouro</label>
+      </dt>
+      <dd class="col-sm-10">
+        {{participanteSorteio.logradouro }}
+      </dd>
+
+      <dt class="col-sm-2">
+        <label class="control-label">Numero</label>
+      </dt>
+      <dd class="col-sm-10">
+        {{participanteSorteio.numero }}
+      </dd>
+
+
+      <dt class="col-sm-2">
+        <label class="control-label">Complemento</label>
+      </dt>
+      <dd class="col-sm-10">
+        {{participanteSorteio.complemento }}
+      </dd>
+
+
+      <dt class="col-sm-2">
+        <label class="control-label">Logradouro</label>
+      </dt>
+      <dd class="col-sm-10">
+        {{participanteSorteio.logradouro }}
+      </dd>
+
+      <dt class="col-sm-2">
+        <label class="control-label">Estado</label>
+      </dt>
+      <dd class="col-sm-10">
+        {{participanteSorteio.estado }}
+      </dd>
+
+      <dt class="col-sm-2">
+        <label class="control-label">Bairro</label>
+      </dt>
+      <dd class="col-sm-10">
+        {{participanteSorteio.bairro }}
+      </dd>
+
+
+      <dt class="col-sm-2">
+        <label class="control-label">Cidade</label>
+      </dt>
+      <dd class="col-sm-10">
+        {{participanteSorteio.cidade }}
+      </dd>
+
+      <dt class="col-sm-2">
+        <label class="control-label">Email</label>
+      </dt>
+      <dd class="col-sm-10">
+        {{participanteSorteio.email }}
+      </dd>
+
+      <dt class="col-sm-2">
+        <label class="control-label">Telefone</label>
+      </dt>
+      <dd class="col-sm-10">
+        {{participanteSorteio.telefone }}
+      </dd>
+
+      <dt class="col-sm-2">
+        <label class="control-label">CPF</label>
+      </dt>
+      <dd class="col-sm-10">
+        {{participanteSorteio.cpf }}
+      </dd>
+    </dl>
+  </div>
+
+
+  <div>
+    <a class="btn btn-dark"
+      [routerLink]="['/sorteio/participante-sorteio/editar',participanteSorteio.id]">Editar</a>&nbsp;
+    <a class="btn btn-info" [routerLink]="['/sorteio/participante-sorteio/listar-todos']">Voltar</a>
+  </div>
+</div>
