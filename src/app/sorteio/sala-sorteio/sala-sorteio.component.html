@@ -1,34 +1,18 @@
 <!-- Conteúdo principal -->
 <div class="container mt-5">
-  <h2 *ngIf="sorteado" class="text-center">Nome do Sorteio</h2>
+  <h2 *ngIf="sorteado" class="text-center">Sorteio: {{ticketSorteio.descricaoSorteio}}</h2>
   <div class="row justify-content-center">
     <div class="col-md-6 text-center">
       <span *ngIf="sorteado">
-      <h1>123456</h1>
-      <p>Teste da Silva</p>
+      <h1>Número do Sorteado: {{ticketSorteio.numero}}</h1>
+      <p>Nome do Contemplado: {{ticketSorteio.nomeParticipanteSorteio}}</p>
       </span>
-      <button class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#sorteioModal">Sortear</button>
+      <div class="form-group">
+      <button class="btn btn-success btn-lg"  (click)="openDialog()">Sortear</button>
+      <button  *ngIf="sorteado"   class="btn btn-info btn-lg" (click)="limpar()">Limpar</button>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- Modal de Sorteio -->
-<div class="modal fade" id="sorteioModal" tabindex="-1" aria-labelledby="sorteioModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="sorteioModalLabel">Selecione o sorteio:</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <select class="form-select mb-3" aria-label="Selecione o sorteio">
-          <option selected>Selecione o sorteio...</option>
-          <option value="sorteio1">Sorteio 1</option>
-          <option value="sorteio2">Sorteio 2</option>
-          <!-- Adicione mais opções conforme necessário -->
-        </select>
-        <button type="button" class="btn btn-success btn-lg">Sortear agora!</button>
-      </div>
-    </div>
-  </div>
-</div>
+

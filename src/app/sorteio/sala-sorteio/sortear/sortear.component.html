@@ -1,0 +1,19 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="sorteioModalLabel">{{ title }}</h5>
+  <button type="button" class="close" aria-label="Close" (click)="dismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form (ngSubmit)="enviaSorteio()" [formGroup]="sorteioForm">
+    <span class="text-danger" *ngIf="displayMessage.idSorteio">
+      <p [innerHTML]="displayMessage.idSorteio"></p>
+  </span>
+  <select class="form-select mb-3" id="idSorteio" aria-label="Selecione o sorteio"  formControlName="idSorteio">
+    <option value=" ">Selecione o sorteio...</option>
+    <option *ngFor="let sorteio of dadosSorteioModal" value="{{sorteio.id}}">{{sorteio.descricao}}</option>
+    <!-- Adicione mais opções conforme necessário -->
+  </select>
+  <input type="submit" value="Sortear agora!" class="btn btn-success btn-lg">
+</form>
+</div>

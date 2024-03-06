@@ -18,11 +18,11 @@ export class SalaSorteioService extends BaseHeaderService{
   }
 
 
-  post(hasAuth: boolean): Observable<TicketSorteio> {
+  post(id:String,hasAuth: boolean): Observable<TicketSorteio> {
     var object = {}
 
     return this.http
-      .post(environment.api + 'sorteio/sortear', object, this.resolveHeader(hasAuth))
+      .post(environment.api + `sorteio/sortear?idDadosSorteio=${id}`, object, this.resolveHeader(hasAuth))
       .pipe(map(this.extractBase), catchError(this.serviceError));
 
   }

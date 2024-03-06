@@ -18,7 +18,7 @@ export class ListaComponent extends FormBaseGlobalComponent implements OnInit {
 
   public dadosSorteio: DadosSorteio[];
   public localStorage=new LocalStorageUtils();
-  errorMessage:string
+  errorMessage:string;
 
   constructor(private service:DadosSorteioService,
               private confirmationDialogService: ConfirmationDialogService,
