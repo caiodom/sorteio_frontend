@@ -9,8 +9,11 @@
     <span class="text-danger" *ngIf="displayMessage.idSorteio">
       <p [innerHTML]="displayMessage.idSorteio"></p>
   </span>
-  <select class="form-select mb-3" id="idSorteio" aria-label="Selecione o sorteio"  formControlName="idSorteio">
-    <option value=" ">Selecione o sorteio...</option>
+  <select class="form-select mb-3"
+          id="idSorteio"
+          aria-label="Selecione o sorteio"
+          [ngClass]="{'is-invalid': displayMessage.idSorteio}"
+          formControlName="idSorteio">
     <option *ngFor="let sorteio of dadosSorteioModal" value="{{sorteio.id}}">{{sorteio.descricao}}</option>
     <!-- Adicione mais opções conforme necessário -->
   </select>
