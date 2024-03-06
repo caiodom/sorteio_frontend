@@ -7,6 +7,7 @@ import { SalaSorteioService } from './services/sala-sorteio.service';
 import { SortearComponent } from './sortear/sortear.component';
 import { SortearDialogService } from './services/sortear-dialog.service';
 import { DadosSorteioService } from '../dados-sorteio/services/dados-sorteio.service';
+import { SalaSorteioGuard } from './services/sala-sorteio.guard';
 
 
 
@@ -26,7 +27,8 @@ import { DadosSorteioService } from '../dados-sorteio/services/dados-sorteio.ser
     SalaSorteioService,
     SortearDialogService,
     DadosSorteioService,
-    SortearDialogService
+    SortearDialogService,
+    SalaSorteioGuard
   ]
 })
 export class SalaSorteioModule { }
