@@ -88,7 +88,6 @@ export class LoginComponent
   processarSucesso(response:any){
     this.loginForm.reset();
     this.errors=[];
-    console.log(response);
 
     this.signInService.localStorage.salvarDadosLocaisUsuario(response.data);
 
